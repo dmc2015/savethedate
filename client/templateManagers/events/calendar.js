@@ -32,6 +32,25 @@ Template.calendar.onRendered( () =>{
         `
       );
     },
+    eventDrop( event, delta, revert ){
+      let date = event.start.format();
+      if ( !isPast( date ) ){
+        let update = {
+          _id: event._id,
+          start: date,
+          end: date
+        };
+
+        Meteor.call( 'editEvent', update, ( error ) => {
+          if ( error ){
+            Bert.alert( error.reason, 'danger' );
+          }
+        });
+      } else {
+        revert();
+        Bert.alert( 'Sorry, you can\'t move items to the past!', 'danger');
+      }
+    },
     dayClick(date){
       Session.set('eventModal', {type: 'add', date: date.format()});
       $( '#add-edit-event-modal').modal('show');
