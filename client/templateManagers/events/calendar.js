@@ -23,7 +23,7 @@ Template.calendar.onRendered( () =>{
         callback(data);
       }
     },
-    //MINE
+
     eventRender(event, element){
       element.find('.fc-content').html(
         `<h4>${ event.title }</h4>
@@ -31,6 +31,14 @@ Template.calendar.onRendered( () =>{
         <p class="type-${ event.type }">#${ event.type}</p>
         `
       );
+    },
+    dayClick(date){
+      Session.set('eventModal', {type: 'add', date: date.format()});
+      $( '#add-edit-event-modal').modal('show');
+    },
+    eventClick(event){
+      Session.set( 'eventModal', {type: 'edit', event: event._id});
+      $( '#add-edit-event-modal').modal('show');
     }
   });
 
