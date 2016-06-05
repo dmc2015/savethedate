@@ -1,3 +1,13 @@
+let isPast = (date) => {
+  let today = moment().format();
+  return moment(today).isAfter(date);
+};
+
+let closeModal = () => {
+  $('#add-edit-event-modal').modal('hide');
+  $('.modal-backdrop').fadeOut();
+}
+
 Template.addEditEventModal.events({
   'submit form' (event, template){
 
@@ -10,7 +20,7 @@ Template.addEditEventModal.events({
       title: template.find('[name="title"]').value,
       start: template.find('[name="start"]').value,
       end: template.find('[name="end"]').value,
-      type: template.find('[name="type"] option:seleted').value,
+      type: template.find('[name="type"] option:selected').value,
       guests: parseInt(template.find('[name="guests"]').value, 10)
     };
 
@@ -22,7 +32,10 @@ Template.addEditEventModal.events({
       if(error){
         Bert.alert(error.reason, 'danger');
       } else{
-        Bert.alert('Event ${eventModal.type}ed!', 'success');
+        Bert.alert(`Event ${eventModal.type}ed!`, 'success');
+        template.find('[name="title"]').value = "";
+        template.find('[name="guests"]').value = "";
+        template.find('[name="type"]').value = `Birthday`;
         closeModal();
       }
     });

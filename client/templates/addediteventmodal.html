@@ -13,10 +13,18 @@
               <div class="col-xs-12 col-sm-4">
                 <label for="type">Event Type</label>
                 <select name="type" class="form-control">
+                  <!-- <option value="Birthday">Birthday</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="Miscellaneous">Miscellaneous</option>
+                  <option value="Wedding">Wedding</option> -->
+                  <!-- <option disabled selected value>  select an option  </option> -->
+
                   <option selected="{{selected event.type 'Birthday' }}" value="Birthday">Birthday</option>
                   <option selected="{{selected event.type 'Corporate' }}" value="Corporate">Corporate</option>
                   <option selected="{{selected event.type 'Miscellaneous' }}" value="Miscellaneous">Miscellaneous</option>
                   <option selected="{{selected event.type 'Wedding' }}" value="Wedding">Wedding</option>
+
+
                 </select>
               </div>
               <div class="col-xs-12 col-sm-3">
@@ -27,11 +35,11 @@
                 <label for="end">Event End</label>
                 <input disabled type="text" name="end" class="form-control" value="{{#if event.end}}{{event.end}}{{else}}{{event.start}}{{/if}}">
               </div>
+              <div class="title col-xs-12 col-sm-3">
+                <label for="title">Event Title</label>
+                <input type="text" name="title" class="form-control" value="{{event.title}}">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="title">Event Title</label>
-            <input type="text" name="title" class="form-control" value="{{event.title}}">
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-4">

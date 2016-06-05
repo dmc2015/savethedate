@@ -2,6 +2,15 @@
 //   $('#events-calendar').fullCalendar();
 // });
 
+let isPast = (date) => {
+  let today = moment().format();
+  return moment(today).isAfter(date);
+};
+
+let closeModal = () => {
+  $('#add-edit-event-modal').modal('hide');
+  $('.modal-backdrop').fadeOut();
+}
 
 
 //These events use a different process of invoking by placing the action at the end as a arrow method
@@ -52,6 +61,7 @@ Template.calendar.onRendered( () =>{
       }
     },
     dayClick(date){
+      console.log('dayclick', date)
       Session.set('eventModal', {type: 'add', date: date.format()});
       $( '#add-edit-event-modal').modal('show');
     },
