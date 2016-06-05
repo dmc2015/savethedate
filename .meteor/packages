@@ -23,6 +23,5 @@ fullcalendar:fullcalendar
 momentjs:moment
 aldeed:simple-schema
 aldeed:collection2
-bootstrap
 less
 session
