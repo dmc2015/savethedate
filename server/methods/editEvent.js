@@ -2,7 +2,7 @@ Meteor.methods({
   //start, end and id have to be checked no matter what
   //the others are only checked if present, line 5
   editEvent(event){
-    check(event{
+    check(event, {
       _id: String,
       title: Match.Optional(String),
       start: String,

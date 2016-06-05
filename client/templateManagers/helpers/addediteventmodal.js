@@ -24,7 +24,7 @@ Template.addEditEventModal.helpers({
 
     if (eventModal){
       return eventModal.type === 'edit' ? Events.findOne(eventModal.event) : {
-        start: eventModal.date
+        start: eventModal.date,
         end: eventModal.date
       };
     }

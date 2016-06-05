@@ -16,7 +16,7 @@ let isPast = (date) => {
 //   $('.modal-backdrop').fadeOut();
 // };
 
-let closeModal() => {
+let closeModal = () => {
   $('#add-edit-event-modal').modal('hide');
   $('.modal-backdrop').fadeOut();
 };
